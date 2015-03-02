@@ -22,49 +22,57 @@
 
 		    background-color: #E0F0FF;
 		}
-	<title>Εγγραφή σε μάθημα</title>
-	</style>
+    </style>
     <script>
-    function validateForm() {
-        var x = document.forms["less_write"]["id"].value;
-        var y = document.forms["less_write"]["courseid"].value;
-        var z = document.forms["less_write"]["email"].value;
-        if (x == null || x == "" || y == null || y == "" || z == null || z == "") {
-            alert("Be Sure To Complete All Necessary Fields");
-            return false;
+        function removeBoarder(clickedId) {
+            document.getElementById(clickedId).style.border="0px solid red"; 	
         }
-        else if (x.length != 7){
-            alert("Student ID Must Be 7 Characters");
-            return false;
+        
+        function validateForm() {
+            var x = document.forms["less_write"]["id"].value;
+            var y = document.forms["less_write"]["courseid"].value;
+            var z = document.forms["less_write"]["email"].value;
+
+            //document.getElementById('email').style.border="3px solid red"; 		
+
+
+            if (x == null || x == "" || y == null || y == "" || z == null || z == "") {
+                alert("Be Sure To Complete All Necessary Fields");
+                return false;
+            }
+            else if (x.length != 7){
+                alert("Student ID Must Be 7 Characters");
+                return false;
+            }
+            else if (x.substring(0,2) != "CS"){
+                alert("Student Starts Only With \"CS\"");
+                return false;
+            }
+            else if (isNaN(x.substring(2,8))){
+                alert("Student Must Contain Only Numbers After \"CS\"");
+                return false;
+            }
         }
-        else if (x.substring(0,2) != "CS"){
-            alert("Student Starts Only With \"CS\"");
-            return false;
-        }
-        else if (!isNaN(x.substring(2,8))){
-            alert("Student Must Contain Only Numbers After \"CS\"");
-            return false;
-        }
-    }
     </script>
+    <title>Εγγραφή σε μάθημα</title>
 </head>
 <body bgcolor="#A3E0FF" style="font-family:Verdana">
 	<div id="_form">
-		<form name="less_write" onsubmit="return validateForm()" method="post">
+		<form name="less_write" onsubmit="return validateForm()">
 			<h1>Εγγραφή σε μάθημα</h1>
 			<div id="_id">
 				<p>Αριθμός μητρώου<sup>*</sup></p>
-				<input type="text" name="id">
+				<input type="text" id="id">
 				<br>
 			</div>
 			<div id="_courseid">
 				<p>Κωδικός Μαθήματος<sup>*</sup></p>
-				<input type="text" name="courseid">
+				<input type="text" id="courseid">
 				<br>
 			</div>
 			<div id="_email">
 				<p>Ηλεκτρονική Διεύθυνση<sup>*</sup></p>
-				<input type="email" name="email" size="50px">
+				<input type="text" id="email" size="50px" onfocus="removeBoarder('email')">
 				<br>			
 				<br>
 			</div>
