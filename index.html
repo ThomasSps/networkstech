@@ -2,19 +2,42 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<style>
+		#_form
+		{
+			margin-top: 20%;
+		    margin-left: auto;
+		    margin-right: auto;
+		    width: 50%;
+		    height: 50%;
+		    padding: 5%;
+		    background-color: #E0F5FF;
+		}
+	</style>
 	<title>Εγγραφή σε μάθημα</title>
 </head>
-<body>
-	<form name="less_write">
-		First name:
-		<br>
-		<input type="text" name="firstname">
-		<br>
-		Last name:
-		<br>
-		<input type="text" name="lastname">
-		<br>
-		<input type="submit" name="submit">
-	</form>
+<body bgcolor="#3366CC" style="font-family:Verdana">
+	<div id="_form">
+		<form name="less_write">
+			<h1>Εγγραφή σε μάθημα</h1>
+			<div id="_id">
+				Αριθμός μητρώου
+				<input type="text" name="id">
+				<br>
+			</div>
+			<div id="_courseid">
+				Κωδικός Μαθήματος
+				<input type="text" name="courseid">
+				<br>
+			</div>
+			<div id="_email">
+				Ηλεκτρονική Διεύθυνση
+				<input type="email" name="email">
+				<br>			
+			</div>
+			<input type="submit" name="submit">
+			<input type="reset" name="reset">
+		</form>
+	</div>
 </body>
 </html>
