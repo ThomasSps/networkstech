@@ -18,31 +18,57 @@
 
 		    width: 600px;
 		    margin-left: -300px;
-		    background-color: #E0F5FF;
+		    padding: 2%;
+
+		    background-color: #E0F0FF;
 		}
-	</style>
 	<title>Εγγραφή σε μάθημα</title>
+	</style>
+    <script>
+    function validateForm() {
+        var x = document.forms["less_write"]["id"].value;
+        var y = document.forms["less_write"]["courseid"].value;
+        var z = document.forms["less_write"]["email"].value;
+        if (x == null || x == "" || y == null || y == "" || z == null || z == "") {
+            alert("Be Sure To Complete All Necessary Fields");
+            return false;
+        }
+        else if (x.length != 7){
+            alert("Student ID Must Be 7 Characters");
+            return false;
+        }
+        else if (x.substring(0,2) != "CS"){
+            alert("Student Starts Only With \"CS\"");
+            return false;
+        }
+        else if (!isNaN(x.substring(2,8))){
+            alert("Student Must Contain Only Numbers After \"CS\"");
+            return false;
+        }
+    }
+    </script>
 </head>
-<body bgcolor="#3366CC" style="font-family:Verdana">
+<body bgcolor="#A3E0FF" style="font-family:Verdana">
 	<div id="_form">
-		<form name="less_write">
+		<form name="less_write" onsubmit="return validateForm()" method="post">
 			<h1>Εγγραφή σε μάθημα</h1>
 			<div id="_id">
-				Αριθμός μητρώου
+				<p>Αριθμός μητρώου<sup>*</sup></p>
 				<input type="text" name="id">
 				<br>
 			</div>
 			<div id="_courseid">
-				Κωδικός Μαθήματος
+				<p>Κωδικός Μαθήματος<sup>*</sup></p>
 				<input type="text" name="courseid">
 				<br>
 			</div>
 			<div id="_email">
-				Ηλεκτρονική Διεύθυνση
-				<input type="email" name="email">
+				<p>Ηλεκτρονική Διεύθυνση<sup>*</sup></p>
+				<input type="email" name="email" size="50px">
 				<br>			
 				<br>
 			</div>
+            <p style="color:red; font-style: italic; font-size:12px">Σημείωση: Πεδία με (*) είναι υποχρεωτικά</p>
 			<input type="submit" name="submit" value="Register">
 			<input type="reset" name="reset">
 		</form>
