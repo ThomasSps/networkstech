@@ -45,11 +45,23 @@
                 return false;
             }
             else if (x.substring(0,2) != "CS"){
-                alert("Student Starts Only With \"CS\"");
+                alert("Student ID Starts Only With \"CS\"");
                 return false;
             }
             else if (isNaN(x.substring(2,8))){
-                alert("Student Must Contain Only Numbers After \"CS\"");
+                alert("Student ID Must Contain Only Numbers After \"CS\"");
+                return false;
+            }
+            else if (y.length != 5){
+                alert("Course ID Must Be 5 Characters");
+                return false;
+            }
+            else if (y.substring(0,2) != "CL"){
+                alert("Course ID Starts Only With \"CL\"");
+                return false;
+            }
+            else if (isNaN(y.substring(2,6))){
+                alert("Course ID Must Contain Only Numbers After \"CL\"");
                 return false;
             }
         }
