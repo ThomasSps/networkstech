@@ -3,8 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<style>
-		#_form
-		{
+		#_form {
 			border: solid 1px black;
 		    position: absolute;
 
@@ -23,7 +22,7 @@
 		    background-color: #E0F0FF;
 		}
     </style>
-    <script>
+	<script>	
         function removeBoarder(clickedId) {
             document.getElementById(clickedId).style.border="0px solid red"; 	
         }
@@ -38,6 +37,12 @@
 
             if (x == null || x == "" || y == null || y == "" || z == null || z == "") {
                 alert("Be Sure To Complete All Necessary Fields");
+                if( x==null || x=="" )
+                	document.getElementById('id').style.border="3px solid red"; 	
+                if( y==null || y=="" )
+                	document.getElementById('courseid').style.border="3px solid red";
+                if( z==null || z=="" )
+                	document.getElementById('email').style.border="3px solid red";  	
                 return false;
             }
             else if (x.length != 7){
@@ -62,12 +67,12 @@
 			<h1>Εγγραφή σε μάθημα</h1>
 			<div id="_id">
 				<p>Αριθμός μητρώου<sup>*</sup></p>
-				<input type="text" id="id">
+				<input type="text" id="id" onfocus="removeBoarder('id')">
 				<br>
 			</div>
 			<div id="_courseid">
 				<p>Κωδικός Μαθήματος<sup>*</sup></p>
-				<input type="text" id="courseid">
+				<input type="text" id="courseid" onfocus="removeBoarder('courseid')">
 				<br>
 			</div>
 			<div id="_email">
