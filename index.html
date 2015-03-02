@@ -23,25 +23,43 @@
 		    background-color: #E0F0FF;
 		}
 	</style>
+	<script>
+	function removeBoarder(clickedId) {
+		document.getElementById(clickedId).style.border="0px solid red"; 	
+	}
+
+	function validateForm() 
+	{
+	    var id = document.forms["less_write"]["id"].value;
+		var courseid = document.forms["less_write"]["courseid"].value;
+	    var email = document.forms["less_write"]["email"].value;
+
+	    if( email == '' || email == null )
+	    {
+			document.getElementById('email').style.border="3px solid red"; 		
+			return false;
+	    }	    
+	}
+	</script>
 	<title>Εγγραφή σε μάθημα</title>
 </head>
 <body bgcolor="#A3E0FF" style="font-family:Verdana">
 	<div id="_form">
-		<form name="less_write">
+		<form name="less_write" onsubmit="return validateForm()">
 			<h1>Εγγραφή σε μάθημα</h1>
 			<div id="_id">
 				<p>Αριθμός μητρώου<sup>*</sup></p>
-				<input type="text" name="id">
+				<input type="text" id="id">
 				<br>
 			</div>
 			<div id="_courseid">
 				<p>Κωδικός Μαθήματος<sup>*</sup></p>
-				<input type="text" name="courseid">
+				<input type="text" id="courseid">
 				<br>
 			</div>
 			<div id="_email">
 				<p>Ηλεκτρονική Διεύθυνση<sup>*</sup></p>
-				<input type="email" name="email" size="50px">
+				<input type="text" id="email" size="50px" onfocus="removeBoarder('email')">
 				<br>			
 				<br>
 			</div>
