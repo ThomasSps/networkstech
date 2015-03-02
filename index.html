@@ -18,31 +18,34 @@
 
 		    width: 600px;
 		    margin-left: -300px;
-		    background-color: #E0F5FF;
+		    padding: 2%;
+
+		    background-color: #E0F0FF;
 		}
 	</style>
 	<title>Εγγραφή σε μάθημα</title>
 </head>
-<body bgcolor="#3366CC" style="font-family:Verdana">
+<body bgcolor="#A3E0FF" style="font-family:Verdana">
 	<div id="_form">
 		<form name="less_write">
 			<h1>Εγγραφή σε μάθημα</h1>
 			<div id="_id">
-				Αριθμός μητρώου
+				<p>Αριθμός μητρώου<sup>*</sup></p>
 				<input type="text" name="id">
 				<br>
 			</div>
 			<div id="_courseid">
-				Κωδικός Μαθήματος
+				<p>Κωδικός Μαθήματος<sup>*</sup></p>
 				<input type="text" name="courseid">
 				<br>
 			</div>
 			<div id="_email">
-				Ηλεκτρονική Διεύθυνση
-				<input type="email" name="email">
+				<p>Ηλεκτρονική Διεύθυνση<sup>*</sup></p>
+				<input type="email" name="email" size="50px">
 				<br>			
 				<br>
 			</div>
+			<p style="color:red; font-style: italic; font-size:12px">Σημείωση: Πεδία με (*) είναι υποχρεωτικά</p>
 			<input type="submit" name="submit">
 			<input type="reset" name="reset">
 		</form>
