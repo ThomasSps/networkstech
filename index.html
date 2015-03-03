@@ -23,57 +23,57 @@
 		}
     	</style>
 	<script>	
-        function removeBoarder(clickedId) {
-            document.getElementById(clickedId).style.border="0px solid red"; 	
-        }
-        
-        function validateForm() {
-            var x = document.forms["less_write"]["id"].value;
-            var y = document.forms["less_write"]["courseid"].value;
-            var z = document.forms["less_write"]["email"].value;
-
-            if (x == null || x == "" || y == null || y == "" || z == null || z == "") {
-                alert("Be Sure To Complete All Necessary Fields");
-                if( x==null || x=="" )
-                	document.getElementById('id').style.border="3px solid red"; 	
-                if( y==null || y=="" )
-                	document.getElementById('courseid').style.border="3px solid red";
-                if( z==null || z=="" )
-                	document.getElementById('email').style.border="3px solid red";  	
-                return false;
-            }
-            else if (x.length != 7){
-                alert("Student ID Must Be 7 Characters");
-                document.getElementById('id').style.border="3px solid red";
-                return false;
-            }
-            else if (x.substring(0,2) != "CS"){
-                alert("Student ID Starts Only With \"CS\"");
-                document.getElementById('id').style.border="3px solid red";
-                return false;
-            }
-            else if (isNaN(x.substring(2,8))){
-                alert("Student ID Must Contain Only Numbers After \"CS\"");
-                document.getElementById('id').style.border="3px solid red";
-                return false;
-            }
-            else if (y.length != 5){
-                alert("Course ID Must Be 5 Characters");
-                document.getElementById('courseid').style.border="3px solid red";
-                return false;
-            }
-            else if (y.substring(0,2) != "CL"){
-                alert("Course ID Starts Only With \"CL\"");
-                document.getElementById('courseid').style.border="3px solid red";
-                return false;
-            }
-            else if (isNaN(y.substring(2,6))){
-                alert("Course ID Must Contain Only Numbers After \"CL\"");
-                document.getElementById('courseid').style.border="3px solid red";
-                return false;
-            }
-        }
-    </script>
+	        function removeBoarder(clickedId) {
+	            document.getElementById(clickedId).style.border="0px solid red"; 	
+	        }
+	        
+	        function validateForm() {
+	            var x = document.forms["less_write"]["id"].value;
+	            var y = document.forms["less_write"]["courseid"].value;
+	            var z = document.forms["less_write"]["email"].value;
+	
+	            if (x == null || x == "" || y == null || y == "" || z == null || z == "") {
+	                alert("Be Sure To Complete All Necessary Fields");
+	                if( x==null || x=="" )
+	                	document.getElementById('id').style.border="3px solid red"; 	
+	                if( y==null || y=="" )
+	                	document.getElementById('courseid').style.border="3px solid red";
+	                if( z==null || z=="" )
+	                	document.getElementById('email').style.border="3px solid red";  	
+	                return false;
+	            }
+	            else if (x.length != 7){
+	                alert("Student ID Must Be 7 Characters");
+	                document.getElementById('id').style.border="3px solid red";
+	                return false;
+	            }
+	            else if (x.substring(0,2) != "CS"){
+	                alert("Student ID Starts Only With \"CS\"");
+	                document.getElementById('id').style.border="3px solid red";
+	                return false;
+	            }
+	            else if (isNaN(x.substring(2,8))){
+	                alert("Student ID Must Contain Only Numbers After \"CS\"");
+	                document.getElementById('id').style.border="3px solid red";
+	                return false;
+	            }
+	            else if (y.length != 5){
+	                alert("Course ID Must Be 5 Characters");
+	                document.getElementById('courseid').style.border="3px solid red";
+	                return false;
+	            }
+	            else if (y.substring(0,2) != "CL"){
+	                alert("Course ID Starts Only With \"CL\"");
+	                document.getElementById('courseid').style.border="3px solid red";
+	                return false;
+	            }
+	            else if (isNaN(y.substring(2,6))){
+	                alert("Course ID Must Contain Only Numbers After \"CL\"");
+	                document.getElementById('courseid').style.border="3px solid red";
+	                return false;
+	            }
+	        }
+    	</script>
     <title>Εγγραφή σε μάθημα</title>
 </head>
 <body bgcolor="#A3E0FF" style="font-family:Verdana">
