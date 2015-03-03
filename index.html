@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html"; charset=iso-8859-7">
 	<style>
 		#_form {
 			border: solid 1px black;
@@ -32,9 +32,6 @@
             var y = document.forms["less_write"]["courseid"].value;
             var z = document.forms["less_write"]["email"].value;
 
-            //document.getElementById('email').style.border="3px solid red"; 		
-
-
             if (x == null || x == "" || y == null || y == "" || z == null || z == "") {
                 alert("Be Sure To Complete All Necessary Fields");
                 if( x==null || x=="" )
@@ -47,26 +44,32 @@
             }
             else if (x.length != 7){
                 alert("Student ID Must Be 7 Characters");
+                document.getElementById('id').style.border="3px solid red";
                 return false;
             }
             else if (x.substring(0,2) != "CS"){
                 alert("Student ID Starts Only With \"CS\"");
+                document.getElementById('id').style.border="3px solid red";
                 return false;
             }
             else if (isNaN(x.substring(2,8))){
                 alert("Student ID Must Contain Only Numbers After \"CS\"");
+                document.getElementById('id').style.border="3px solid red";
                 return false;
             }
             else if (y.length != 5){
                 alert("Course ID Must Be 5 Characters");
+                document.getElementById('courseid').style.border="3px solid red";
                 return false;
             }
             else if (y.substring(0,2) != "CL"){
                 alert("Course ID Starts Only With \"CL\"");
+                document.getElementById('courseid').style.border="3px solid red";
                 return false;
             }
             else if (isNaN(y.substring(2,6))){
                 alert("Course ID Must Contain Only Numbers After \"CL\"");
+                document.getElementById('courseid').style.border="3px solid red";
                 return false;
             }
         }
