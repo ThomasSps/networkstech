@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html"; charset=iso-8859-7">
+	<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8"> <!--iso-8859-7-->
 	<style>
 		#_form {
 			border: solid 1px black;
 		    position: absolute;
 
 		    left: 50%;
-		    top: 50%;
-
-		    z-index: 100;
+		    top: 40%;
 
 		    height: auto;
 		    margin-top: -200px;
@@ -21,10 +19,96 @@
 
 		    background-color: #E0F0FF;
 		}
+        #_saved {
+            border: solid 1px black;
+            position: absolute;
+
+            left: 50%;
+            top: 105%;
+
+            height: 5%;
+            margin-top: -200px;
+
+            width: 600px;
+            margin-left: -300px;
+
+            overflow: auto; 
+
+            padding: 2%;
+            background-color: #FFFFFF;
+        }
+        #_saved th {
+            background-color: #000000;
+            color: #FFFFFF;
+            text-align: center;
+        }
+        #_saved tr {
+            background-color: #DEDEDE;
+            color: #000000;
+            text-align: left;
+        }
+      
     </style>
-	<script>	
+	<script>
         function removeBoarder(clickedId) {
             document.getElementById(clickedId).style.border="0px solid red"; 	
+        }
+
+        function restore_prev( ) {
+
+            //Insert now the new row into the table
+            table = document.getElementById('less_db');
+
+            var idnum = parseInt( localStorage.getItem( 'lastID' ) );
+
+            for( i = 0; i < idnum; i++ )
+            {
+                var entriesStr = JSON.parse( localStorage[i] );
+                row = table.insertRow();
+
+                var rowcol1 = row.insertCell(0);
+                rowcol1.innerHTML = entriesStr[0];
+
+                var rowcol2 = row.insertCell(1);
+                rowcol2.innerHTML = entriesStr[1];
+
+                var rowcol3 = row.insertCell(2);
+                rowcol3.innerHTML = entriesStr[2]
+            }
+        }
+
+        function saveEntries( ) {
+            var x = document.forms["less_write"]["id"].value;
+            var y = document.forms["less_write"]["courseid"].value;
+            var z = document.forms["less_write"]["email"].value;
+
+            //Insert now the new row into the table
+            table = document.getElementById('less_db');
+            row = table.insertRow();
+
+            //Save these items
+            var idnum = parseInt( localStorage.getItem( 'lastID' ) );
+            var formSaveID = idnum.toString();
+            
+            var newEntry = new Array();
+            newEntry[0] = x;
+            newEntry[1] = y;
+            newEntry[2] = z;
+
+            localStorage.setItem( formSaveID, JSON.stringify( newEntry ) );
+            localStorage.removeItem( 'lastID' );
+
+            idnum += 1;
+            localStorage.setItem( 'lastID', idnum );
+
+            var rowcol1 = row.insertCell(0);
+            rowcol1.innerHTML = x;
+
+            var rowcol2 = row.insertCell(1);
+            rowcol2.innerHTML = y;
+
+            var rowcol3 = row.insertCell(2);
+            rowcol3.innerHTML = z;
         }
         
         function validateForm() {
@@ -73,12 +157,26 @@
                 return false;
             }
         }
+
+        function initialize() {
+            var lastID = localStorage.getItem( 'lastID' );
+
+            if( lastID == null )                {
+                location.reload(true);
+                localStorage.setItem( 'lastID', 0 );
+            }
+            else{
+                //Load previous items
+                restore_prev( );
+            }
+        }
+
     </script>
     <title>Εγγραφή σε μάθημα</title>
 </head>
-<body bgcolor="#A3E0FF" style="font-family:Verdana">
-	<div id="_form">
-		<form name="less_write" onsubmit="return validateForm()">
+<body bgcolor="#A3E0FF" style="font-family:Verdana" onload="initialize(); ">    
+    	<div id="_form">
+		<form name="less_write" action="javascript:saveEntries()" onsubmit="return validateForm()">
 			<h1>Εγγραφή σε μάθημα</h1>
 			<div id="_id">
 				<p>Αριθμός μητρώου<sup>*</sup></p>
@@ -101,5 +199,14 @@
 			<input type="reset" name="reset">
 		</form>
 	</div>
-</body>
+    <div id="_saved">
+        <table id="less_db" style="width:100%">
+          <tr>
+            <th>Αρ. Μητρώου</th>
+            <th>Κωδ. Μαθματος</th>      
+            <th>Ηλ. Διεύθυνση</th>
+          </tr>
+        </table>
+    </div>
+    </body>
 </html>
