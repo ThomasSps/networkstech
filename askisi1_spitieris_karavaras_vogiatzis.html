@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8"> <!--iso-8859-7-->
-	<style>
-		#_form {
-			border: solid 1px black;
-		    position: absolute;
+    <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8"> <!--iso-8859-7-->
+    <style>
+        #_form {
+            border: solid 1px black;
+            position: absolute;
 
-		    left: 50%;
-		    top: 40%;
+            left: 50%;
+            top: 40%;
 
-		    height: auto;
-		    margin-top: -200px;
+            height: auto;
+            margin-top: -200px;
 
-		    width: 600px;
-		    margin-left: -300px;
-		    padding: 2%;
+            width: 600px;
+            margin-left: -300px;
+            padding: 2%;
 
-		    background-color: #E0F0FF;
-		}
+            background-color: #E0F0FF;
+        }
         #_saved {
             border: solid 1px black;
             position: absolute;
 
             left: 50%;
-            top: 105%;
+            top: 80%;
 
             height: 5%;
-            margin-top: -200px;
 
             width: 600px;
             margin-left: -300px;
@@ -48,9 +47,9 @@
             text-align: left;
         }
     </style>
-	<script>
+    <script>
         function removeBoarder(clickedId) {
-            document.getElementById(clickedId).style.border="0px solid red"; 	
+            document.getElementById(clickedId).style.border="0px solid red";    
         }
 
         function restore_prev( ) {
@@ -118,11 +117,11 @@
             if (x == null || x == "" || y == null || y == "" || z == null || z == "") {
                 alert("Be Sure To Complete All Necessary Fields");
                 if( x==null || x=="" )
-                	document.getElementById('id').style.border="3px solid red"; 	
+                    document.getElementById('id').style.border="3px solid red";     
                 if( y==null || y=="" )
-                	document.getElementById('courseid').style.border="3px solid red";
+                    document.getElementById('courseid').style.border="3px solid red";
                 if( z==null || z=="" )
-                	document.getElementById('email').style.border="3px solid red";  	
+                    document.getElementById('email').style.border="3px solid red";      
                 return false;
             }
             else if (x.length != 7){
@@ -174,29 +173,29 @@
 </head>
 <body bgcolor="#A3E0FF" style="font-family:Verdana" onload="initialize(); ">    
     <div id="_form">
-		<form name="less_write" action="javascript:saveEntries()" onsubmit="return validateForm()">
-			<h1>Εγγραφή σε μάθημα</h1>
-			<div id="_id">
-				<p>Αριθμός μητρώου<sup>*</sup></p>
-				<input type="text" id="id" onfocus="removeBoarder('id')">
-				<br>
-			</div>
-			<div id="_courseid">
-				<p>Κωδικός Μαθήματος<sup>*</sup></p>
-				<input type="text" id="courseid" onfocus="removeBoarder('courseid')">
-				<br>
-			</div>
-			<div id="_email">
-				<p>Ηλεκτρονική Διεύθυνση<sup>*</sup></p>
-				<input type="text" id="email" size="50px" onfocus="removeBoarder('email')">
-				<br>			
-				<br>
-			</div>
+        <form name="less_write" action="javascript:saveEntries()" onsubmit="return validateForm()">
+            <h1>Εγγραφή σε μάθημα</h1>
+            <div id="_id">
+                <p>Αριθμός μητρώου<sup>*</sup></p>
+                <input type="text" id="id" onfocus="removeBoarder('id')">
+                <br>
+            </div>
+            <div id="_courseid">
+                <p>Κωδικός Μαθήματος<sup>*</sup></p>
+                <input type="text" id="courseid" onfocus="removeBoarder('courseid')">
+                <br>
+            </div>
+            <div id="_email">
+                <p>Ηλεκτρονική Διεύθυνση<sup>*</sup></p>
+                <input type="text" id="email" size="50px" onfocus="removeBoarder('email')">
+                <br>            
+                <br>
+            </div>
             <p style="color:red; font-style: italic; font-size:12px">Σημείωση: Πεδία με (*) είναι υποχρεωτικά</p>
-			<input type="submit" name="submit" value="Register">
-			<input type="reset" name="reset">
-		</form>
-	</div>
+            <input type="submit" name="submit" value="Register">
+            <input type="reset" name="reset">
+        </form>
+    </div>
     <div id="_saved">
         <table id="less_db" style="width:100%">
           <tr>
